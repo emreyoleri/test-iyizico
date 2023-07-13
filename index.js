@@ -16,8 +16,8 @@ const app = express()
 var request = {
     locale: Iyzipay.LOCALE.TR,
     conversationId: '123456789',
-    price: '1200',
-    paidPrice: '1200.2',
+    price: '1',
+    paidPrice: '1.2',
     currency: Iyzipay.CURRENCY.TRY,
     enabledInstallments: [1],
     basketId: 'B67832',
