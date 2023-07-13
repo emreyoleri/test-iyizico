@@ -19,7 +19,7 @@ var request = {
     price: '1200',
     paidPrice: '1200.2',
     currency: Iyzipay.CURRENCY.TRY,
-    installment: '1',
+    enabledInstallments: [1],
     basketId: 'B67832',
     paymentChannel: Iyzipay.PAYMENT_CHANNEL.WEB,
     paymentGroup: Iyzipay.PAYMENT_GROUP.PRODUCT,
