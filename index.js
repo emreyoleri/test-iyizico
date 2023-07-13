@@ -96,7 +96,8 @@ app.get("/pay" , async (req,res) => {
     iyzipay.threedsInitialize.create(request, function (err, result) {
     // console.log(err, result);
     // console.log(atob(result.threeDSHtmlContent))
-    res.send(atob(result.threeDSHtmlContent))
+    res.send(Buffer.from(result.threeDSHtmlContent, 'base64').toString('utf8'))
+    
 });
 
 
