@@ -46,7 +46,7 @@ var request = {
         country: 'Turkey',
         zipCode: '34732'
     },
-    callbackUrl: "https://dogugurdal.com/result",
+    callbackUrl: "https://test-iyizico.onrender.com/result",
     shippingAddress: {
         contactName: 'Jane Doe',
         city: 'Istanbul',
