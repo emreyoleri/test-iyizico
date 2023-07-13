@@ -93,15 +93,17 @@ var request = {
 
 
 app.get("/pay" , async (req,res) => {
-    iyzipay.payment.create(request, function (err, result) {
-    console.log(err, result);
-    res.send("Success")
+    iyzipay.threedsInitialize.create(request, function (err, result) {
+    // console.log(err, result);
+    // console.log(atob(result.threeDSHtmlContent))
+    res.send(atob(result.threeDSHtmlContent))
 });
 
 
 })
-app.get("/result" , async (req,res) => {
-   console.log(err, result);
+app.post("/result" , async (req,res) => {
+   console.log(req);
+   console.log(res)
     res.send("Success")
 
 
