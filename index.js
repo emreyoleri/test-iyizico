@@ -2,6 +2,14 @@ const express = require("express")
 const cors = require('cors')
 const Iyzipay = require('iyzipay');
 
+var bodyParser = require('body-parser')
+ 
+ 
+// create application/json parser
+var jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+
 const iyzipay = new Iyzipay({
     apiKey: 'sandbox-ZGlntFnyzkUEkmdmbMa6OV8LuENPos9I',
     secretKey: 'sandbox-8M22OKASdgXmwO6jqD3WvGy4m3glb0x4',
@@ -18,7 +26,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.post("/pay", async (req, res) => {
+app.post("/pay", jsonParser , async (req, res) => {
     var request = {
         locale: Iyzipay.LOCALE.TR,
         conversationId: '123456789',
@@ -52,7 +60,7 @@ app.post("/pay", async (req, res) => {
             country: 'Turkey',
             zipCode: '34732'
         },
-        callbackUrl: "https://test-iyizico.onrender.com/result",
+        callbackUrl: "https://frontend.thetakkas.com/success",
         shippingAddress: {
             contactName: 'Jane Doe',
             city: 'Istanbul',
@@ -68,30 +76,30 @@ app.post("/pay", async (req, res) => {
             zipCode: '34742'
         },
         // basketItems: [
-            // {
-            //     id: 'BI101',
-            //     name: 'Binocular',
-            //     category1: 'Collectibles',
-            //     category2: 'Accessories',
-            //     itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
-            //     price: '0.3'
-            // },
-            // {
-            //     id: 'BI102',
-            //     name: 'Game code',
-            //     category1: 'Game',
-            //     category2: 'Online Game Items',
-            //     itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
-            //     price: '0.5'
-            // },
-            // {
-            //     id: 'BI103',
-            //     name: 'Usb',
-            //     category1: 'Electronics',
-            //     category2: 'Usb / Cable',
-            //     itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
-            //     price: '0.2'
-            // }
+        //     {
+        //         id: 'BI101',
+        //         name: 'Binocular',
+        //         category1: 'Collectibles',
+        //         category2: 'Accessories',
+        //         itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+        //         price: '0.3'
+        //     },
+        //     {
+        //         id: 'BI102',
+        //         name: 'Game code',
+        //         category1: 'Game',
+        //         category2: 'Online Game Items',
+        //         itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
+        //         price: '0.5'
+        //     },
+        //     {
+        //         id: 'BI103',
+        //         name: 'Usb',
+        //         category1: 'Electronics',
+        //         category2: 'Usb / Cable',
+        //         itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+        //         price: '0.2'
+        //     }
         // ]
 
         basketItems: req.body.items.map(item => ({
