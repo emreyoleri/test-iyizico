@@ -75,37 +75,37 @@ app.post("/pay", jsonParser , async (req, res) => {
             address: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
             zipCode: '34742'
         },
-        // basketItems: [
-        //     {
-        //         id: 'BI101',
-        //         name: 'Binocular',
-        //         category1: 'Collectibles',
-        //         category2: 'Accessories',
-        //         itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
-        //         price: '0.3'
-        //     },
-        //     {
-        //         id: 'BI102',
-        //         name: 'Game code',
-        //         category1: 'Game',
-        //         category2: 'Online Game Items',
-        //         itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
-        //         price: '0.5'
-        //     },
-        //     {
-        //         id: 'BI103',
-        //         name: 'Usb',
-        //         category1: 'Electronics',
-        //         category2: 'Usb / Cable',
-        //         itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
-        //         price: '0.2'
-        //     }
-        // ]
+        basketItems: [
+            {
+                id: 'BI101',
+                name: 'Binocular',
+                category1: 'Collectibles',
+                category2: 'Accessories',
+                itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+                price: '0.3'
+            },
+            {
+                id: 'BI102',
+                name: 'Game code',
+                category1: 'Game',
+                category2: 'Online Game Items',
+                itemType: Iyzipay.BASKET_ITEM_TYPE.VIRTUAL,
+                price: '0.5'
+            },
+            {
+                id: 'BI103',
+                name: 'Usb',
+                category1: 'Electronics',
+                category2: 'Usb / Cable',
+                itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+                price: '0.2'
+            }
+        ]
 
-        basketItems: req.body.items.map(item => ({
-            ...item,
-            itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
-        }))
+        // basketItems: req.body.items.map(item => ({
+        //     ...item,
+        //     itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+        // }))
     };
 
     iyzipay.threedsInitialize.create(request, function (err, result) {
